@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(241, 234, 205);
+    margin: 25px;
+}
+h1{
+    font-family: "lucida console","arial";
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    color: rgb(163, 81, 81);
+    font-style: italic;
+    background-color: rgb(236, 222, 222);
+    
+    
+}
+#me1{
+    float: left;
+    margin-right: 20px;
+    border: 1px solid hsl(4, 50%, 45%);
+    border-radius: 8px;
+}
+h2{
+    font-family: "lucida console","arial";
+    color: black;
+}
+h4{
+    font-family: "lucida console","arial";
+    color: darkslategrey;
+    font-weight: lighter;
+    margin-bottom: 100px ;
+}
+h3{
+    font-family: "lucida console","arial";
+    color: black;
+    
+}
+li{
+    font-family: "lucida console","arial";
+    color: darkslategrey;
+}
