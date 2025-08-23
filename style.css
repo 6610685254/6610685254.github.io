@@ -5,6 +5,17 @@ body{
     font-family: "Lucida Console","Arial",sans-serif;
     line-height: 1.5;
   }
+
+  .head{
+    color: rgb(163, 81, 81);
+    font-style: italic;
+    background-color: rgb(236, 222, 222);
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+    padding: 2px 9px;
+    border-radius: 6px;
+    margin: 0;
+  }
+
   h1{
     color: rgb(163, 81, 81);
     font-style: italic;
@@ -26,9 +37,9 @@ body{
     width:240px;
     height:350px;          
     object-fit:cover;
-    border:1px solid hsl(4,50%,45%);
+    /* border:1px solid hsl(4,50%,45%); */
     border-radius:8px;
-    box-shadow:0 3px 6px rgba(0,0,0,0.2);
+    box-shadow:0 3px 6px rgba(0,0,0,0.3);
     display:block;
     float:none;
     overflow: auto; 
@@ -39,7 +50,7 @@ body{
     height:310px;          
     overflow:auto;        
     background:#fff;
-    border:1px solid rgb(163,81,81);
+    /* border:1px solid rgb(163,81,81); */
     border-radius:10px;
     padding:20px;
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
@@ -74,15 +85,40 @@ body{
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
     box-sizing:border-box;
   }
-  .hobby-box{  border:1px solid rgb(163,81,81); }
-  .contact-box{ border:1px solid rgb(81,118,163); }
   
-  /* ---------- Mobile stacking ---------- */
-  @media (max-width: 760px){
-    .profile{ flex-direction:column; }
-    #me1{ width:100%; height:auto; }
-    .info-box{ height:auto; }
+  /* .hobby-box{  border:1px solid rgb(163,81,81); }
+  .contact-box{ border:1px solid rgb(81,118,163); } */
   
-    .bottom-row{ flex-direction:column; }
-  }
+/* ==== Hover grow (always on) ==== */
+#me1,
+.info-box,
+.hobby-box,
+.contact-box {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  transform-origin: center;
+  will-change: transform;
+}
+
+#me1:hover,
+.info-box:hover,
+.hobby-box:hover,
+.contact-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+/* Optional subtle border highlight */
+.info-box:hover,
+.hobby-box:hover { border-color: rgb(180, 92, 92); }
+.contact-box:hover { border-color: rgb(88, 132, 180); }
+
+/* Touch fallback: small press effect */
+#me1:active,
+.info-box:active,
+.hobby-box:active,
+.contact-box:active {
+  transform: scale(0.99);
+}
+
+
   
