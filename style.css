@@ -24,6 +24,14 @@ body{
     border-radius: 6px;
     margin: 0;
   }
+  .info-box h1 {
+    background: rgb(236, 222, 222);
+    padding: 4px 10px;
+    margin: 0;
+    border-radius: 6px;
+    width: 98.6%;
+    display: block;
+  }
   
   
   .profile{
@@ -99,6 +107,14 @@ body{
   will-change: transform;
 }
 
+.info-box {
+    justify-content: flex-start !important;  /* override space-between */
+    align-items: flex-start;
+    gap: 8px;                                 /* neat spacing between h2, h4, p */
+  }
+  .info-box h2 { margin: 0; }
+  .info-box h4 { margin: 0; }
+
 #me1:hover,
 .info-box:hover,
 .hobby-box:hover,
@@ -120,5 +136,153 @@ body{
   transform: scale(0.99);
 }
 
+/* Softer hover just for the info box */
+.profile .info-box {
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    transform-origin: center;
+  }
+  
+  .profile .info-box:hover {
+    transform: scale(1.015);          /* was 1.03 — now very gentle */
+    box-shadow: 0 8px 18px rgba(0,0,0,0.14);
+    border-color: rgb(180, 92, 92);
+  }
 
+  /* Contact links layout */
+.contact-links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  
+  .contact-links a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #111;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    transition: transform 160ms ease, box-shadow 160ms ease, color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+    will-change: transform;
+  }
+  
+  /* Icon sizing uses currentColor */
+  .contact-links .icon{
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    transition: transform 160ms ease;
+  }
+  
+  /* General hover lift */
+  .contact-links a:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+  
+  /* Icon responds too */
+  .contact-links a:hover .icon{
+    transform: scale(1.1);
+  }
+  
+  /* Brand-y hover colors */
+  .contact-links a.ig:hover{
+    color: #E1306C;                 /* Instagram pink */
+    border-color: rgba(225,48,108,0.35);
+    background-color: rgba(225,48,108,0.06);
+  }
+  .contact-links a.email:hover{
+    color: #c2410c;                 /* warm orange */
+    border-color: rgba(194,65,12,0.35);
+    background-color: rgba(194,65,12,0.06);
+  }
+  .contact-links a.github:hover{
+    color: #24292f;                 /* GitHub dark */
+    border-color: rgba(36,41,47,0.35);
+    background-color: rgba(36,41,47,0.06);
+  }
+  
+  /* Reduced motion respect */
+  @media (prefers-reduced-motion: reduce){
+    .contact-links a,
+    .contact-links .icon{ transition: none !important; }
+  }
+
+
+
+  /* ===== Interests: card grid ===== */
+.hobby-box .interest-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+  
+  /* Individual interest card */
+  .hobby-box .interest-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), #fff);
+    border: 1.5px solid rgba(163,81,81,0.25); /* matches your theme */
+    border-radius: 14px;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "ic txt"
+      "meter meter";
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,.08);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    margin-top: 20px;
+  }
+  .hobby-box .interest-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0,0,0,.14);
+    border-color: rgba(163,81,81,0.45);
+  }
+  
+  /* Emoji/icon bubble */
+  .hobby-box .interest-card .ic{
+    grid-area: ic;
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    font-size: 24px;
+    border-radius: 50%;
+    background: rgba(163,81,81,0.10);
+    border: 1px solid rgba(163,81,81,0.25);
+    
+  }
+  
+  /* Title + small description */
+  .hobby-box .interest-card .txt{ grid-area: txt; }
+  .hobby-box .interest-card .txt h4{
+    margin: 0 0 2px; font-size: 16px; color: #111;
+  }
+  .hobby-box .interest-card .txt p{
+    margin: 0; font-size: 13px; color: #374151;
+  }
+  
+  /* Progress meter uses --level (0–1) */
+  .hobby-box .interest-card .meter{
+    grid-area: meter;
+    height: 8px;
+    border-radius: 999px;
+    background: #eee;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+  }
+  .hobby-box .interest-card .meter span{
+    position: absolute; inset: 0 auto 0 0;
+    width: calc(var(--level, .6) * 100%); /* default 60% if not set */
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    border-radius: 999px;
+    box-shadow: inset 0 0 2px rgba(255,255,255,.6);
+    transition: width 300ms ease;
+  }
   
